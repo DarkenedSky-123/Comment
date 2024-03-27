@@ -1,7 +1,13 @@
 from coment import comm
 from latest_video import get_latest_video_details
 import random
+import os
 
+# Get the current working directory
+current_dir = os.getcwd()
+
+# Combine the current directory with the filename (data.txt)
+data = os.path.join(current_dir, "data.txt")
 def time(time_str):
     hours, minutes, seconds = map(int, time_str.split(':'))
     total_minutes = hours * 60 + minutes
@@ -66,12 +72,12 @@ def generate_comment():
     channel_id = "UCfjQOWJqoQ69BUaUZtFtGZg"
     latest_video_details = get_latest_video_details(1, channel_id)
     minu, sec = time(latest_video_details["video_duration"])
-    with open("data.txt", "r") as f:
+    with open(data, "r") as f:
         last_vid = f.readline()
 
     if last_vid != latest_video_details["video_watch_url"]:
         comments_list = []
-        with open("data.txt", "w") as f:
+        with open(data, "w") as f:
             f.write(latest_video_details["video_watch_url"])
         for i in range(10):
             minute = random.randint(1, minu)
