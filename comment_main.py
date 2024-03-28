@@ -72,12 +72,12 @@ def generate_comment():
     channel_id = "UCfjQOWJqoQ69BUaUZtFtGZg"
     latest_video_details = get_latest_video_details(1, channel_id)
     minu, sec = time(latest_video_details["video_duration"])
-    with open(data, "r") as f:
+    with open("Comment/data.txt", "r") as f:
         last_vid = f.readline()
 
     if last_vid != latest_video_details["video_watch_url"]:
         comments_list = []
-        with open(data, "w") as f:
+        with open("Comment/data.txt", "w") as f:
             f.write(latest_video_details["video_watch_url"])
         for i in range(10):
             minute = random.randint(1, minu)
