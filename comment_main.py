@@ -5,7 +5,7 @@ import os
 
 # Get the current working directory
 current_dir = os.getcwd()
-
+print("Currrent Dir :"current_dir)
 # Combine the current directory with the filename (data.txt)
 data = os.path.join(current_dir, "data.txt")
 def time(time_str):
